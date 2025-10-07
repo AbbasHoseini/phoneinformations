@@ -6,38 +6,29 @@ buildscript {
         google()
         mavenCentral()
     }
-
     dependencies {
-        // Match your app’s AGP version
         classpath 'com.android.tools.build:gradle:8.1.1'
-    }
-}
-
-rootProject.allprojects {
-    repositories {
-        google()
-        mavenCentral()
     }
 }
 
 apply plugin: 'com.android.library'
 
 android {
-    namespace = "com.sumanrajpathak.phoneinformations"
-
-    compileSdk = 34  // ✅ Must use this style for AGP 8+
+    namespace "com.komche.phoneinformations"  // ✅ required for AGP 8.x
+    compileSdkVersion 34                      // ✅ update to latest supported version
 
     defaultConfig {
-        minSdk = 21  // ✅ Use this style too
-        consumerProguardFiles "consumer-rules.pro"
+        minSdkVersion 21                      // ✅ update minSdk for AGP 8.x compatibility
+        targetSdkVersion 34
     }
 
     compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_1_8
-        targetCompatibility = JavaVersion.VERSION_1_8
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
     }
+}
 
-    lint {
-        disable 'InvalidPackage'
-    }
+repositories {
+    google()
+    mavenCentral()
 }
