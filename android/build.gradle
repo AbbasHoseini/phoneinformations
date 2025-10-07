@@ -8,6 +8,7 @@ buildscript {
     }
 
     dependencies {
+        // Match your app’s AGP version
         classpath 'com.android.tools.build:gradle:8.1.1'
     }
 }
@@ -22,15 +23,21 @@ rootProject.allprojects {
 apply plugin: 'com.android.library'
 
 android {
-    namespace "com.sumanrajpathak.phoneinformations"
-    compileSdkVersion 31
+    namespace = "com.sumanrajpathak.phoneinformations"
 
-    compileOptions {
-        sourceCompatibility JavaVersion.VERSION_1_8
-        targetCompatibility JavaVersion.VERSION_1_8
-    }
+    compileSdk = 34  // ✅ Must use this style for AGP 8+
 
     defaultConfig {
-        minSdkVersion 16
+        minSdk = 21  // ✅ Use this style too
+        consumerProguardFiles "consumer-rules.pro"
+    }
+
+    compileOptions {
+        sourceCompatibility = JavaVersion.VERSION_1_8
+        targetCompatibility = JavaVersion.VERSION_1_8
+    }
+
+    lint {
+        disable 'InvalidPackage'
     }
 }
