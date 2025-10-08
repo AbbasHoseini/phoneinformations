@@ -6,29 +6,30 @@ buildscript {
         google()
         mavenCentral()
     }
+
     dependencies {
-        classpath 'com.android.tools.build:gradle:8.1.1'
+        classpath 'com.android.tools.build:gradle:7.1.2'
+    }
+}
+
+rootProject.allprojects {
+    repositories {
+        google()
+        mavenCentral()
     }
 }
 
 apply plugin: 'com.android.library'
 
 android {
-    namespace "com.komche.phoneinformations"  // ✅ required for AGP 8.x
-    compileSdkVersion 34                      // ✅ update to latest supported version
-
-    defaultConfig {
-        minSdkVersion 21                      // ✅ update minSdk for AGP 8.x compatibility
-        targetSdkVersion 34
-    }
+    compileSdkVersion 31
 
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
     }
-}
 
-repositories {
-    google()
-    mavenCentral()
+    defaultConfig {
+        minSdkVersion 16
+    }
 }
